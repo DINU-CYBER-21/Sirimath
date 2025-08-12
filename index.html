@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+  <title>SIRIMATH</title>
+  <style>
+    /* 🔥 Fullscreen Background Video */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 🔥 Main Page Styling */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      color: white;
+      font-family: 'Poppins', Arial, sans-serif;
+      text-align: center;
+      overflow-y: auto;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+      padding: 20px 0;
+    }
+
+    /* 🔥 Logo Container + Card Styling Combined */
+    .logo-container {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 25px;
+      border-radius: 20px;
+      width: 320px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      backdrop-filter: blur(8px);
+      animation: logoFadeIn 2s ease-in-out forwards;
+    }
+
+    .logo-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #00e6e6;
+      box-shadow: 0 0 15px #00e6e6;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      animation: logoPulse 3s infinite ease-in-out;
+    }
+
+    .logo-img:hover {
+      transform: rotate(10deg) scale(1.2);
+    }
+
+    /* 🔥 Title Styling inside the same container */
+    h3 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00, #00ffff);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 5s infinite;
+      user-select: none;
+    }
+
+    @keyframes logoFadeIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0%; }
+      50% { background-position: 200%; }
+      100% { background-position: 0%; }
+    }
+
+    /* 🔥 Button Container with card styling */
+    .button-container {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 25px;
+      border-radius: 20px;
+      width: 320px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* 🔥 Button Styling */
+    .button {
+      width: 220px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(45deg, #ff0000, #ff00ff);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+      animation: floatUpDown 2.5s infinite ease-in-out;
+    }
+
+    .button:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 25px #ff0000, 0 0 50px #ffff00;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+    }
+
+    .button:active {
+      transform: scale(0.9) translateY(6px);
+      box-shadow: 0 0 30px #00ffff;
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* 🔥 Footer Animation */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 16px;
+      animation: footerFade 4s ease-in-out infinite;
+    }
+
+    @keyframes footerFade {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* 🔥 Responsive Design */
+    @media (max-width: 600px) {
+      .logo-container, .button-container {
+        width: 90vw;
+        padding: 20px;
+      }
+
+      .logo-img {
+        width: 100px;
+        height: 100px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      .button {
+        width: 160px;
+        height: 50px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔥 Background Video -->
+  <div class="video-container">
+    <video autoplay loop muted playsinline>
+      <source src="https://files.catbox.moe/dvjdwz.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <!-- 🔥 Logo Image + Title in one card -->
+  <div class="logo-container">
+    <img src="https://files.catbox.moe/bo5rsd.jpg" alt="Sirimath  Logo" class="logo-img" />
+    <h3>SIRIMATH</h3>
+  </div>
+
+  <!-- 🔥 Button Container styled as a card -->
+  <div class="button-container">
+    <a href="https://whatsapp.com/channel/0029Vb6UWAj89inlTdP4oW1j" class="button" target="_blank" rel="noopener noreferrer">WHATSAPP CHANNEL</a>
+    <a href="https://t.me/Nun_SMSBOT?start=8338939543" class="button" target="_blank" rel="noopener noreferrer">FREE FAKE NUMBER</a>
+    <a href="https://wa.me/+94755409310?text=HI_SIRIMATH" class="button" target="_blank" rel="noopener noreferrer">OWNER</a>
+  </div>
+
+  <footer>
+    SIRIMATH &copy; <span id="currentYear"></span>
+  </footer>
+
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
